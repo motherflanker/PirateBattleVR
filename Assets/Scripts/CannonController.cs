@@ -6,12 +6,12 @@ public class CannonController : MonoBehaviour
 {
     public GameObject ballPrefab; // Префаб шара
     public Transform spawnPoint; // Точка появления шаров
-    public float shootInterval = 2f; // Интервал между выстрелами
+    public float shootInterval = 0.01f; // Интервал между выстрелами
 
 
-    public float rotationSpeed = 30f; // Скорость поворота объекта
-
-    private float currentRotation = 0f; // Текущий угол поворота объекта
+    public float rotationSpeed = 60f; // Скорость поворота объекта
+    float smooth = 5.0f;
+    private float currentRotation = 180f; // Текущий угол поворота объекта
     private int rotationDirection = 1; // Направление поворота объекта (1 - влево, -1 - вправо)
 
     private void Start()
@@ -27,13 +27,14 @@ public class CannonController : MonoBehaviour
         currentRotation += rotationAmount;
 
         // Ограничиваем угол поворота
-        currentRotation = Mathf.Clamp(currentRotation, -180f, 180f);
+        currentRotation = Mathf.Clamp(currentRotation, 60f, 180f);
 
         // Применяем поворот объекта
-        transform.rotation = Quaternion.Euler(0f, currentRotation, 0f);
+        transform.rotation = Quaternion.Euler(-90f, currentRotation, 0f);
+         //= Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
 
         // Если достигнут максимальный угол поворота, меняем направление поворота
-        if (Mathf.Abs(currentRotation) >= 180f)
+        if (Mathf.Abs(currentRotation) >= 180f || Mathf.Abs(currentRotation) <= 60f)
         {
             rotationDirection *= -1;
         }

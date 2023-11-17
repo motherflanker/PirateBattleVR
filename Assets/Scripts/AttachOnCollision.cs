@@ -20,28 +20,8 @@ public class AttachOnCollision : MonoBehaviour
         { 
             //присвоение переменной шар в скрипте насоса ссыки на шар
             pumpController.ball = gameObject;
-            // Получаем Rigidbody обоих объектов
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
-
-            // Прикрепляем объект к другому объекту
-            //rigidbody.isKinematic = true;
-            transform.parent = collision.transform;
-
-            // Если нужно, можно также передвинуть объект в определенную позицию относительно другого объекта
-            //transform.localPosition = new Vector3(0, 0, 0);
-
-            // Если нужно, можно также повернуть объект относительно другого объекта
-            //transform.localRotation = Quaternion.identity;
-
-            //!!!!пусть это пока что будет отключено, а то шар летает!!!!
-            // Отключаем коллайдер объекта, чтобы избежать дальнейших соприкосновений
-            //GetComponent<Collider>().enabled = false;
-
-            //!!!!пусть это пока что будет отключено, а то шар летает!!!!
-            // Отключаем Rigidbody другого объекта, чтобы избежать физического взаимодействия
-            //otherRigidbody.isKinematic = true;
-
+            //transform.parent = collision.transform;
+            Physics.IgnoreCollision(pumpController.ball.GetComponent<Collider>(), GetComponent<Collider>());
             isAttached = true;
         }
         else
