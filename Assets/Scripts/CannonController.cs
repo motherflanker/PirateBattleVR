@@ -14,6 +14,8 @@ public class CannonController : MonoBehaviour
     private float currentRotation = 180f; // Текущий угол поворота объекта
     private int rotationDirection = 1; // Направление поворота объекта (1 - влево, -1 - вправо)
 
+
+
     private void Start()
     {
         // Запускаем корутину для автоматической стрельбы
@@ -48,6 +50,10 @@ public class CannonController : MonoBehaviour
 
             // Создаем экземпляр шара из префаба и задаем его положение и направление
             GameObject ball = Instantiate(ballPrefab, spawnPoint.position, spawnPoint.rotation);
+            ball.tag = "clone";
+            //ссылка на контроллер шара
+            ballController ballController = ball.AddComponent<ballController>();
+
 
             // Запускаем шар вперед
             Rigidbody ballRigidbody = ball.GetComponent<Rigidbody>();
