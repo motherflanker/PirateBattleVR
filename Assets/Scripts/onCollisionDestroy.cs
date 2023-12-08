@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class onCollisionDestroy : MonoBehaviour {
 
     
-    public int count;
     public Text text;
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,8 +16,7 @@ public class onCollisionDestroy : MonoBehaviour {
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            count++;
-            text.text = count.ToString();
+            text.text += "●";
         }
     }
 
