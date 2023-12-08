@@ -7,8 +7,8 @@ public class CannonController : MonoBehaviour
     public GameObject ballPrefab; // Префаб шара
     public Transform spawnPoint; // Точка появления шаров
     public float shootInterval = 0.01f; // Интервал между выстрелами
-
-
+    private AudioSource audioSource;
+    public AudioClip audioClip;
     public float rotationSpeed = 60f; // Скорость поворота объекта
     float smooth = 5.0f;
     private float currentRotation = 180f; // Текущий угол поворота объекта
@@ -54,9 +54,11 @@ public class CannonController : MonoBehaviour
             //ссылка на контроллер шара
             ballController ballController = ball.AddComponent<ballController>();
 
-
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(audioClip);
             // Запускаем шар вперед
             Rigidbody ballRigidbody = ball.GetComponent<Rigidbody>();
+
             ballRigidbody.AddForce(spawnPoint.forward * 10f, ForceMode.Impulse);
         }
     }
