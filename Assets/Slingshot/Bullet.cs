@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
     public Transform point;
@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool _inAir = false;
     private Vector3 _lastPosition = Vector3.zero;
+
+    //todo: add on collision destroy n score
 
     private void Awake()
     {
