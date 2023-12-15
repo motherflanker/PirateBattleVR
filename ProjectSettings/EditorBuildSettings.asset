@@ -24,5 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cannon.unity
     guid: cbc9178b640c9f44cb3ad6e33067a557
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 515ea134666dbf34492f4325f105905a, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e2b755565f237cb4fb5bb64b1425fb30, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 64d97f01f17d2b54c93b7df648559fa8, type: 2}
